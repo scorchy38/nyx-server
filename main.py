@@ -9,7 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 
 API_KEY = os.getenv("OPENAI_API_KEY")
-chatinstance = OpenAI(api_key=API_KEY)
+client = OpenAI(api_key=API_KEY)
 
 
 @app.route('/analyze', methods=['POST'])
@@ -29,7 +29,7 @@ def analyze_image():
         "provide descriptions for any coded items. Format the response in markdown."
     )
 
-    response = chatinstance.chat.completions.create(
+    response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a helpful assistant in understanding product labels."},

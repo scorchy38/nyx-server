@@ -1,0 +1,1 @@
+- Get any product label description in layman words
